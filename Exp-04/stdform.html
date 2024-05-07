@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <h1>Student Validation Form</h1>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    margin: 5%;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.error {
+    color: red;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    margin-bottom: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+input[type="radio"]:checked + label::before,
+input[type="checkbox"]:checked + label::before {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+}
+
+        
+    </style>
+</head>
+<body>
+    <br>
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="others" name="gender value="others>
+        <label for="others">others</label><br><br>
+
+        <label for="lang">Language known:</label>
+        <input type="checkbox" id="english" name="english" value="english">
+        <label for="english">English</label>
+        <input type="checkbox" id="tamil" name="tamil" value="tamil">
+        <label for="tamil">Tamil</label>
+        <input type="checkbox" id="hindi" name="hindi" value="hindi">
+        <label for="hindi">Hindi</label><br><br>
+
+        <label for="district">Select district:</label>
+        <select id="district" name="district">
+            <option value="">Select</option>
+
+            
+            <option value="chennai">Chennai</option>
+            <option value="erode">Erode</option>
+            <option value="salem">Salem</option>
+            <option value="tiruppur">Tiruppur</option>
+        </select><br>
+
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address" rows="4"></textarea><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+
+        <label for="mobile">Mobile number:</label>
+        <input type="tel" id="mobile" name="mobile"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var languages = document.querySelectorAll('input[name="english"], input[name="tamil"], input[name="hindi"]:checked');
+            var district = document.getElementById('district').value;
+            var address = document.getElementById('address').value;
+            var email = document.getElementById('email').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var mobile = document.getElementById('mobile').value;
+    
+            var isValid = true;
+            var errorMessage = "";
+    
+            
+            var namePattern = /^[a-zA-Z\s]+$/;
+            if (name === "" || !namePattern.test(name)) {
+                errorMessage += "Name is required and should contain only alphabets and spaces.\n";
+                isValid = false;
+            }
+    
+            if (!gender) {
+                errorMessage += "Gender is required.\n";
+                isValid = false;
+            }
+    
+            if (languages.length === 0) {
+                errorMessage += "At least one language should be selected.\n";
+                isValid = false;
+            }
+    
+            if (district === "") {
+                errorMessage += "District is required.\n";
+                isValid = false;
+            }
+    
+            if (address === "") {
+                errorMessage += "Address is required.\n";
+                isValid = false;
+            }
+    
+            
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "" || !emailPattern.test(email)) {
+                errorMessage += "Invalid email format.\n";
+                isValid = false;
+            }
+    
+            
+            var passwordPattern =/(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,15}/;
+            if (password === "" || !passwordPattern.test(password)) {
+                errorMessage += "Password must contain at least one uppercase letter, one lowercase letter, one digit, one special character, and be at least 8 characters long.\n";
+                isValid = false;
+            }
+    
+            
+            var usernamePattern = /^[a-zA-Z][a-zA-Z0-9]*$/;
+            if (username === "" || !usernamePattern.test(username)) {
+                errorMessage += "Username is required and should start with an alphabet and can contain only alphanumeric characters.\n";
+                isValid = false;
+            }
+    
+            if (mobile === "") {
+                errorMessage += "Mobile number is required.\n";
+                isValid = false;
+            } else {
+                var mobilePattern = /^[6-9]\d{9}$/;
+                if (!mobilePattern.test(mobile)) {
+                    errorMessage += "Invalid mobile number format.\n";
+                    isValid = false;
+                }
+            }
+    
+            if (!isValid) {
+                alert(errorMessage);
+                return false;
+            }
+            else{
+                alert('Form submitted successfully');
+            }
+            return true;
+        }
+    </script>
+    
+</body>
+</html>
