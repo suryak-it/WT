@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head><br><br>
+    <title>IIPC calculator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-container {
+            width: 45%;
+            padding: 10px;
+        }
+        .bill-container {
+            width: 45%;
+            padding: 10px;
+        }
+        p {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body class="bg-warning">
+    <div class="container-fluid">
+        <h1 class="text-center text-white">IIPC CALCULATOR</h1><br><br>
+        <div class="container">
+            <div class="input-container" id="inputContainer">
+                <form method="post" id="inputForm">
+                    <label for="nameoforg" class="form-label text-danger">Name of the Industry/Organisation</label>
+                    <input class="form-control" type="text" id="nameoforg" name="nameoforg" required/><br>
+                    <label for="nature" class="form-label text-danger">Nature of Consultancy :</label>
+                    <input type="radio" class="form-check-input" id="test" name="nature" value="Testing" required/>
+                    <label for="test" class="form-check-label">Testing</label>
+                    <input type="radio" class="form-check-input" id="train" name="nature" value="Training" required/>
+                    <label for="train" class="form-check-label">Training</label>
+                    <input type="radio" class="form-check-input" id="consult" name="nature" value="Consultancy" required/>
+                    <label for="consult" class="form-check-label">Consultancy</label><br>
+                    <label for="amo" class="form-label text-danger">Amount</label>
+                    <input type="number" class="form-control" id="amo" name="amo" required/><br>
+                    <label for="nooffaculty" class="form-label text-danger">Number of faculty</label>
+                    <select id="sel" class="form-select" name="fac">
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        <option value="3"> 3 </option>
+                    </select><br>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" onclick="calculateBill()">Submit</button>
+                    </div><br>
+                </form>
+            </div>
+            <div class="bill-container" id="billContainer">
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateBill() {
+            var name = document.getElementById("nameoforg").value;
+            var amount = parseFloat(document.getElementById("amo").value);
+            var gst = parseFloat(amount * 0.18);
+            var amount1 = parseFloat(gst + amount);
+            var a1 = parseFloat(amount);
+            var a2 = a1 * (30 / 100);
+            var a3 = a1 * (70 / 100);
+            var no = parseInt(document.getElementById("sel").value);
+            var apf = a3 / no;
+
+            var billContent = `
+                <h3 class="text-center text-primary">Your Bill</h3>
+                <p class="text-center text-dark">Name of the Industry: ${name}</p>
+                <p class="text-center text-dark">Amount: ${amount.toFixed(2)}</p>
+                <p class="text-center text-dark">Including GST: ${amount1.toFixed(2)}</p>
+                <p class="text-center text-dark">Amount going for the college: ${a2.toFixed(2)}</p>
+                <p class="text-center text-dark">Amount going for the faculty: ${a3.toFixed(2)}</p>
+                <p class="text-center text-dark">Number of faculty: ${no}</p>
+                <p class="text-center text-dark">Amount per faculty: ${apf.toFixed(2)}</p>
+            `;
+
+            document.getElementById("billContainer").innerHTML = billContent;
+        }
+    </script>
+</body>
+</html>
