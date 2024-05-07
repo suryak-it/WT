@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <title>User - Information</title>
+  <style>
+    body{
+            font-family:Verdana,sans-serif;
+            background-color: gainsboro;
+            margin: 0;
+            padding: 0;
+    }
+    form{
+            width: 30%;
+            margin: auto;
+            margin-top:100px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1{
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+  <div class="form">
+  <h1>EMI - Information Form</h1>
+  <form action="C:\Users\surya\OneDrive\Documents\WT\others" method="POST">
+    <label for="name">First Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="name">Last Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="city">City:</label>
+    <select name="City">
+      <option value="city">Select-Your-Name</option>
+      <option value="erode">Erode</option>
+      <option value="salem">Salem</option>
+      <option value="chennai">Chennai</option>
+      <option value="tenkasi">Tenkasi</option>
+</select><br><br>
+    <label for="gender">Gender:</label>
+    <input type="radio" name="gender" id="Male" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" name="gender" id="Female" value="Female">
+    <label for="female">Female</label>
+    <input type="radio" name="gender" id="other" value="others">
+    <label for="other">Others</label>
+    </select><br><br>
+
+    <label for="mobile">Mobile Number:</label>
+    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required><br><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br><br>
+
+    <label for="pincode">Pincode:</label>
+    <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</div1>
+</body>
+</html>
