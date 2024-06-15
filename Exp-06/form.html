@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form (GET)</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: rgb(166, 166, 254);">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">EMPLOYEE DETAILS</h1>
+        <form id="form" method="get">
+            <label for="username" class="form-label">EMPLOYEE NAME:</label>
+            <input type="text" class="form-control mb-3" id="username" name="username">
+           
+            <label for="id" class="form-label">EMPLOYEE ID:</label>
+            <input type="text" class="form-control mb-3" id="id" name="id">
+           
+            <label for="branch" class="form-label">BRANCH:</label>
+            <select id="branch" class="form-select mb-3" name="branch">
+                <option value="select">Select any one Branch</option>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="Finance">Finance</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+           
+            <div class="mb-3">
+                <label class="form-label">Gender:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="male" name="gender" value="Male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="female" name="gender" value="Female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+
+            <label for="phno" class="form-label">MOBILE NO:</label>
+            <input type="text" class="form-control mb-3" id="phno" name="phno">
+           
+            <label for="branchadd" class="form-label">BRANCH ADDRESS:</label>
+            <input type="text" class="form-control mb-3" id="branchadd" name="branchadd">
+           
+            <button type="submit" class="btn btn-primary me-2" onclick="set('/insert', event)">Insert</button>
+            <button type="submit" class="btn btn-primary me-2" onclick="set('/delete', event)">Delete</button>
+            <button type="submit" class="btn btn-primary me-2" onclick="set('/update', event)">Update</button>
+            <button type="submit" class="btn btn-primary" onclick="set('/display', event)"> View Report</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function set(path, event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            document.getElementById('form').action = 'http://localhost:7050' + path;
+            document.getElementById('form').submit(); // Submit the form after setting the action
+        }
+    </script>
+</body>
+</html>
