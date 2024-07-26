@@ -1,0 +1,26 @@
+/* src/app/product-list/product-list.component.css */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  .product-card {
+    padding: 15px;
+    width: calc(20% - 32px); /* Adjust to display 5 products per row */
+    box-sizing: border-box;
+    text-align: center;
+    margin: 20px; /* Add margin for spacing */
+  }
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .product-card button {
+    color: blue;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }

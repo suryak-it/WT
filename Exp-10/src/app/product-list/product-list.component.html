@@ -1,0 +1,44 @@
+<!-- src/app/product-list/product-list.component.html -->
+<div class="product-list">
+  <div class="product-card">
+    <img src="./assets/image/s1.jpg" alt="Product 1" class="product-image" />
+    <br>
+    <h2>Washing Machine</h2>
+    <p>Washing machine comprises a barrel or a drum, an inlet hose pipe along with a valve, a drain pipe, a water filter a circuit board, and a timer. </p>
+    <p>Rs.15,000</p>
+    <button (click)="addToCart({id: 1, name: 'Washing Machine', price:15000, description: 'Description for Product 1', imageUrl: 'assets/images/headset.webp'})">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="./assets/image/s2.jpg" alt="Product 9" class="product-image" />
+    <h2>Water Heater</h2>
+    <p>Water heaters are often installed in the basement/cellar of a building. They heat water for use in kitchen sinks, bathroom showers.</p>
+    <p>Rs.15,000</p>
+    <button (click)="addToCart({id: 9, name: 'Water Heater', price: 15000, description: 'Description for Product 9', imageUrl: 'https://via.placeholder.com/150'})">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="./assets/image/s3.jpg" alt="Product 5" class="product-image" />
+    <br>
+    <h2>LED TV</h2>
+    <p> LED stands for Light Emitting Diodes. One of the differences that separates it from LCD TVs is that LCD TVs use fluorescent lights, while LEDs make use of diodes.</p>
+    <p>Rs.15,000</p>
+    <button (click)="addToCart({id: 5, name: 'LED TV', price: 15000, description: 'Description for Product 5', imageUrl: 'https://via.placeholder.com/150'})">Add to Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="./assets/image/sneakers.jpg" alt="Product 4" class="product-image" />
+    <br><br>
+    <h2>Microwave Oven</h2>
+    <p>A microwave oven or simply microwave is an electric oven that heats and cooks food by exposing it to electromagnetic radiation in the microwave frequency range.</p>
+    <p>Rs.9,000</p>
+    <button (click)="addToCart({id: 4, name: 'Microwave Oven', price: 9000, description: 'Description for Product 4', imageUrl: 'https://s.alicdn.com/@sc04/kf/Hd521db5e65a74fbd90100ff61e1c5f840.jpg_720x720q50.jpg'})">Add to Cart</button>
+  </div>
+  
+  <div class="product-card">
+    <br>
+    <img src="./assets/image/snekerwite.jpg" alt="Product 3" class="product-image" />
+    <br><br>
+    <h2>Refrigerator</h2>
+    <p>Refrigerators work by causing the refrigerant circulating inside them to change from a liquid into a gas.</p>
+    <p>Rs.30,000</p>
+    <button (click)="addToCart({id: 3, name: 'Refrigerator', price: 30000, description: 'Description for Product 3', imageUrl: 's1.jpg'})">Add to Cart</button>
+  </div>
+</div>
