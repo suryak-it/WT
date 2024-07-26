@@ -1,0 +1,87 @@
+<h1 style="text-align: center;">Form</h1>
+<form [formGroup]="frm" (ngSubmit)="onSubmit()">
+  <p>
+    <label for="firstname">First Name </label>
+    <input type="text" id="firstname" name="firstname" formControlName="firstname">
+    <ng-container *ngIf="frm.controls['firstname'].invalid && (frm.controls['firstname'].dirty || frm.controls['firstname'].touched)">
+      <b style="color:red">Please enter valid data</b>
+    </ng-container>
+    <ng-container *ngIf="frm.controls['firstname'].errors?.['required']">
+      <b style="color:blue">This field is required</b>
+    </ng-container>
+  </p>
+  <p>
+    <label for="lastname">Last Name </label>
+    <input type="text" id="lastname" name="lastname" formControlName="lastname">
+    <ng-container *ngIf="frm.controls['lastname'].errors?.['maxlength']">
+      <b style="color:blue">Max length is 4 </b>
+    </ng-container>
+  </p>
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email" formControlName="emailid">
+    <ng-container *ngIf="frm.controls['emailid'].errors?.['email']">
+      <b style="color:blue">Enter valid email id </b>
+    </ng-container>
+  </p>
+  <p>
+    <label for="gender">Gender </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+  </p>
+  <p>
+    <label for="country">Country </label>
+    <select id="country" name="country" formControlName="country">
+      <option value="1">India</option>
+      <option value="2">USA</option>
+      <option value="3">England</option>
+      <option value="4">Singapore</option>
+    </select>
+  </p>
+  <p>
+    <label for="isverified">Verified the details </label>
+    <input type="checkbox" id="isverified" name="isverified" formControlName="isverified">
+  </p>
+  <p>
+    <button type="submit" [disabled]="!frm.valid">Submit</button>
+  </p>
+</form>
+
+<P style="text-align: center;font-size: 30px;">{{ msg }}</P>
+
+<!-- Display submitted form data in a table -->
+<div *ngIf="submitted">
+  <h2 style="text-align: center;">Submitted Form Data</h2>
+  <table style="margin: auto;">
+    <tr>
+      <th>Field</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td>{{ frm.controls['firstname'].value }}</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>{{ frm.controls['lastname'].value }}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{ frm.controls['emailid'].value }}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{ frm.controls['gender'].value }}</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td>{{ frm.controls['country'].value }}</td>
+    </tr>
+    <tr>
+      <td>Verified</td>
+      <td>{{ frm.controls['isverified'].value ? 'Yes' : 'No' }}</td>
+    </tr>
+  </table>
+</div>
+
+<router-outlet />
